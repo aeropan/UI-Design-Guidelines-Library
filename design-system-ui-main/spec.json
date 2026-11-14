@@ -1,0 +1,31 @@
+{
+  "id": "design-system-ui-main",
+  "name": "标准设计系统",
+  "version": "1.2.10",
+  "summary": "企业级暗/亮双主题设计规范，基于 Ant Design 6 + React 19 的完整 token 体系与组件库",
+  "scenarios": [
+    "数据平台",
+    "后台管理系统",
+    "AI 平台",
+    "图谱平台",
+    "数据中台"
+  ],
+  "principles": [
+    "暗色优先 (dark-first)，默认深色主题",
+    "单一主色靛蓝 #5264E0，单屏覆盖率 < 15%",
+    "4px 基线栅格，所有间距可被 4 整除",
+    "明暗双主题镜像 token，不存在主题专属 token",
+    "静态表面无阴影，阴影仅响应状态变化",
+    "颜色一律使用 --ds-* CSS 变量，禁止硬编码 hex"
+  ],
+  "ai": {
+    "workbuddy": "ai/workbuddy/SKILL.md",
+    "codex": "ai/AGENTS.md"
+  },
+  "screenshots": ["screenshots/overview.png"],
+  "links": {
+    "design": "DESIGN.md",
+    "readme": "README.md",
+    "changelog": "CHANGELOG.md"
+  }
+}

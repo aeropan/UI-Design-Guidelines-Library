@@ -1,0 +1,12 @@
+{
+  "name": "standard-design-system",
+  "version": "1.2.10",
+  "private": true,
+  "description": "标准设计系统 — Monorepo（docs + theme）",
+  "scripts": {
+    "docs:dev": "cd packages/docs && npx vite",
+    "theme:build": "cd packages/theme && npm run build",
+    "theme:publish": "cd packages/theme && npm publish"
+  },
+  "license": "MIT"
+}

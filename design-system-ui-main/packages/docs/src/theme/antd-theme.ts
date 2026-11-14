@@ -1,0 +1,736 @@
+import type { ThemeConfig } from 'antd';
+
+/**
+ * 标准设计系统 — Ant Design 主题配置
+ * 将现有色彩规范映射到 Ant Design 的 Design Token 体系
+ *
+ * ═══════════════ CSS 变量 → Ant Design Token 映射速查 ═══════════════
+ * CSS 变量定义位于 src/index.css，本文件将其映射为 Ant Design 可识别的
+ * Design Token。更改颜色时应同时修改两处。
+ *
+ * ── 背景层级 ──
+ *   Layout.bodyBg      → var(--ds-bg-base)         → #17191C (暗) / #f0f1f5 (亮)
+ *   Layout.headerBg    → var(--ds-bg-header)       → #17191C / #f0f1f5
+ *   Layout.siderBg     → var(--ds-bg-sidebar)      → #17191C / #f0f1f5
+ *   Card / Modal bg    → var(--ds-bg-card)          → #222427 / #ffffff
+ *   Input / Select bg  → var(--ds-bg-input)         → #1d1f23 / #f5f6fa
+ *   Dropdown bg        → var(--ds-bg-elevated)      → #2C2E31 / #f5f6fa
+ *
+ * ── 主题色 (Primary) ──
+ *   colorPrimary       → var(--ds-primary)          → #5264E0 (暗/亮一致)
+ *   colorPrimaryHover  → var(--ds-primary-hover)     → #6B80F0 / #3F50C0
+ *   colorPrimaryBg     → var(--ds-primary-subtle)    → rgba(82,100,224,0.12) / 0.08
+ *
+ * ── 语义色 ──
+ *   colorSuccess       → var(--ds-success)          → #43CB89
+ *   colorWarning       → var(--ds-warning)          → #FFA564
+ *   colorError          → var(--ds-danger)           → #FF6464
+ *   各语义色 bg/hover/active 详见下方 token 定义
+ *
+ * ── 文字色 ──
+ *   colorText          → var(--ds-text-primary)     → #f2f3f5 / #3d414a
+ *   colorTextSecondary → var(--ds-text-secondary)   → #8a8f99 / #787b84
+ *   colorTextTertiary  → var(--ds-text-tertiary)    → #6d717a / #b8bcc4
+ *
+ * ── 边框色 ──
+ *   colorBorder        → var(--ds-border)           → #323640 / #e4e5e9
+ *   colorSplit         → 同 colorBorder
+ *
+ * ── 阴影 (通过 boxShadow token) ──
+ *   boxShadow          → var(--shadow-z1)              → 0 1px 2px rgba(…)
+ *   boxShadowSecondary → var(--shadow-z4)              → 0 4px 20px rgba(…)
+ *
+ * ── 组件级覆盖 ──
+ *   各组件 (Button / Table / Input / Modal / Tag 等) 的 token 覆盖
+ *   位于下方 darkTheme.components / lightTheme.components 中。
+ *   各 playground 文件顶部也有对应组件的速查注释。
+ */
+
+// ═══════════════════ 基础 Design Tokens ═══════════════════
+const baseTokens = {
+  colorPrimary: '#5264E0',
+  colorSuccess: '#43CB89',
+  colorWarning: '#FFA564',
+  colorError: '#FF6464',
+  colorInfo: '#5264E0',
+  colorTextBase: '#f2f3f5',
+  colorBgBase: '#17191C',
+  borderRadius: 6,
+  borderRadiusLG: 8,
+  borderRadiusSM: 4,
+  fontSize: 14,
+  fontSizeLG: 16,
+  fontSizeSM: 12,
+  fontFamily: `-apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif`,
+  controlHeight: 36,
+  controlHeightSM: 28,
+  controlHeightLG: 40,
+  lineHeight: 1.5715,
+  paddingContentHorizontal: 16,
+  paddingContentVertical: 12,
+  wireframe: false,
+} as const;
+
+// ═══════════════════ 暗色主题 ═══════════════════
+export const darkTheme: ThemeConfig = {
+  token: {
+    ...baseTokens,
+    // 背景层级
+    colorBgContainer: '#222427',
+    colorBgElevated: '#2C2E31',
+    colorBgLayout: '#17191C',
+    colorBgSpotlight: '#2C2E31',
+    colorBgMask: 'rgba(0, 0, 0, 0.6)',
+    // 文本层级
+    colorText: '#f2f3f5',
+    colorTextSecondary: '#8a8f99',
+    colorTextTertiary: '#6d717a',
+    colorTextQuaternary: '#50545c',
+    colorTextPlaceholder: '#6d717a',
+    colorTextDisabled: '#50545c',
+    colorTextHeading: '#f2f3f5',
+    colorTextLabel: '#8a8f99',
+    colorTextDescription: '#8a8f99',
+    // 边框
+    colorBorder: '#323640',
+    colorBorderSecondary: '#232528',
+    colorSplit: '#232528',
+    // 填充
+    colorFill: 'rgba(200, 205, 215, 0.1)',
+    colorFillSecondary: 'rgba(200, 205, 215, 0.06)',
+    colorFillTertiary: '#1c1e21',
+    colorBgContainerDisabled: '#1c1e21',
+    colorBorderDisabled: '#2a2d33',
+    colorFillQuaternary: 'rgba(200, 205, 215, 0.02)',
+    // Primary 衍生
+    colorPrimaryBg: 'rgba(82, 100, 224, 0.12)',
+    colorPrimaryBgHover: 'rgba(82, 100, 224, 0.18)',
+    colorPrimaryBorder: 'rgba(82, 100, 224, 0.35)',
+    colorPrimaryBorderHover: 'rgba(82, 100, 224, 0.5)',
+    colorPrimaryHover: '#6B80F0',
+    colorPrimaryActive: '#3F50C0',
+    colorPrimaryTextHover: '#6B80F0',
+    colorPrimaryText: '#5264E0',
+    colorPrimaryTextActive: '#3F50C0',
+    // Success 衍生
+    colorSuccessBg: 'rgba(67, 203, 137, 0.15)',
+    colorSuccessBgHover: 'rgba(67, 203, 137, 0.2)',
+    colorSuccessBorder: 'rgba(67, 203, 137, 0.3)',
+    colorSuccessBorderHover: 'rgba(67, 203, 137, 0.45)',
+    colorSuccessHover: '#5DD89A',
+    colorSuccessActive: '#37B878',
+    colorSuccessText: '#43CB89',
+    colorSuccessTextHover: '#5DD89A',
+    colorSuccessTextActive: '#37B878',
+    // Warning 衍生
+    colorWarningBg: 'rgba(255, 165, 100, 0.12)',
+    colorWarningBgHover: 'rgba(255, 165, 100, 0.18)',
+    colorWarningBorder: 'rgba(255, 165, 100, 0.25)',
+    colorWarningBorderHover: 'rgba(255, 165, 100, 0.4)',
+    colorWarningHover: '#FFB87A',
+    colorWarningActive: '#E6954E',
+    colorWarningText: '#FFA564',
+    colorWarningTextHover: '#FFB87A',
+    colorWarningTextActive: '#E6954E',
+    // Error 衍生
+    colorErrorBg: 'rgba(255, 100, 100, 0.12)',
+    colorErrorBgHover: 'rgba(255, 100, 100, 0.18)',
+    colorErrorBorder: 'rgba(255, 100, 100, 0.25)',
+    colorErrorBorderHover: 'rgba(255, 100, 100, 0.4)',
+    colorErrorHover: '#FF7878',
+    colorErrorActive: '#D94C4C',
+    colorErrorText: '#FF6464',
+    colorErrorTextHover: '#FF7878',
+    colorErrorTextActive: '#D94C4C',
+    // Info 衍生
+    colorInfoBg: 'rgba(82, 100, 224, 0.12)',
+    colorInfoBgHover: 'rgba(82, 100, 224, 0.18)',
+    colorInfoBorder: 'rgba(82, 100, 224, 0.25)',
+    colorInfoBorderHover: 'rgba(82, 100, 224, 0.4)',
+    colorInfoHover: '#6B80F0',
+    colorInfoActive: '#3F50C0',
+    colorInfoText: '#5264E0',
+    colorInfoTextHover: '#6B80F0',
+    colorInfoTextActive: '#3F50C0',
+    // 链接
+    colorLink: '#5264E0',
+    colorLinkHover: '#6B80F0',
+    colorLinkActive: '#3F50C0',
+    // Box Shadow
+    boxShadow: '0 1px 2px rgba(0,0,0,0.30)',
+    boxShadowSecondary: '0 4px 20px rgba(0,0,0,0.40)',
+  },
+  components: {
+    Layout: {
+      bodyBg: '#17191C',
+      headerBg: '#17191C',
+      siderBg: '#17191C',
+      triggerBg: '#222427',
+      triggerColor: '#8a8f99',
+    },
+    Menu: {
+      darkItemBg: '#17191C',
+      darkSubMenuItemBg: '#17191C',
+      darkItemColor: '#8a8f99',
+      darkItemHoverColor: '#d0d2d8',
+      darkItemSelectedColor: '#5264E0',
+      darkItemHoverBg: 'rgba(82, 100, 224, 0.08)',
+      darkItemSelectedBg: 'rgba(82, 100, 224, 0.12)',
+      itemBorderRadius: 6,
+      itemHeight: 38,
+      iconSize: 16,
+      collapsedIconSize: 16,
+    },
+    Button: {
+      contentFontSize: 14,
+      contentFontSizeSM: 12,
+      contentFontSizeLG: 14,
+      fontWeight: 500,
+      borderRadius: 6,
+      borderRadiusSM: 4,
+      borderRadiusLG: 8,
+      controlHeight: 36,
+      controlHeightSM: 28,
+      controlHeightLG: 40,
+      paddingInline: 16,
+      paddingInlineSM: 12,
+      paddingInlineLG: 20,
+      defaultBg: 'transparent',
+      defaultColor: '#d0d2d8',
+      defaultBorderColor: '#3a3f4d', /* = var(--ds-border-muted) */
+      defaultHoverBorderColor: '#5264E0',
+      defaultHoverColor: '#5264E0',
+      defaultActiveBorderColor: '#5264E0',
+      defaultActiveColor: '#5264E0',
+    },
+    Table: {
+      headerBg: '#2C2E31',
+      headerColor: '#d0d2d8',  /* = var(--ds-text-primary) */
+      rowHoverBg: '#2C2E31',
+      rowSelectedBg: 'rgba(82, 100, 224, 0.06)',
+      rowSelectedHoverBg: 'rgba(82, 100, 224, 0.1)',
+      borderColor: '#323640',
+      headerBorderRadius: 0,
+      cellPaddingBlock: 12,
+      cellPaddingInline: 16,
+    },
+    Tag: {
+      defaultBg: 'rgba(200, 205, 215, 0.1)',
+      defaultColor: '#8a8f99',
+      fontSizeSM: 12,
+      lineHeightSM: 1.5,
+    },
+    Card: {
+      colorBgContainer: '#222427',
+      borderRadiusLG: 8,
+      paddingLG: 20,
+    },
+    Modal: {
+      contentBg: '#222427',
+      headerBg: '#222427',
+      titleColor: '#d0d2d8',
+      colorIcon: '#8a8f99',
+      colorIconHover: '#d0d2d8',
+      borderRadiusLG: 12,
+      titleFontSize: 16,
+    },
+    Input: {
+      activeBg: '#1d1f23',
+      hoverBg: '#1d1f23',
+      activeBorderColor: '#5264E0',
+      hoverBorderColor: '#5264E0',
+      borderRadius: 6,
+      controlHeight: 36,
+      colorBgContainer: '#1d1f23',
+      colorBorder: '#323640',
+      colorText: '#f2f3f5',
+      colorTextPlaceholder: '#6d717a',
+      colorTextDisabled: '#50545c',
+    },
+    Select: {
+      optionActiveBg: 'rgba(82, 100, 224, 0.08)',
+      optionSelectedBg: 'rgba(82, 100, 224, 0.12)',
+      optionSelectedColor: '#5264E0',
+      selectorBg: '#1d1f23',
+      colorBgElevated: '#2C2E31',
+      colorBgContainer: '#1d1f23',
+      colorBorder: '#323640',
+      borderRadius: 6,
+      controlHeight: 36,
+    },
+    DatePicker: {
+      colorBgContainer: '#1d1f23',
+      colorBgElevated: '#2C2E31',
+      colorBorder: '#323640',
+      colorText: '#f2f3f5',
+      colorTextPlaceholder: '#6d717a',
+      activeBorderColor: '#5264E0',
+      hoverBorderColor: '#3a3f4d', /* = var(--ds-border-muted) */
+      cellHoverBg: 'rgba(82, 100, 224, 0.08)',
+      cellActiveWithRangeBg: 'rgba(82, 100, 224, 0.12)',
+      cellRangeBorderColor: '#5264E0',
+      borderRadius: 6,
+      controlHeight: 36,
+    },
+    Tooltip: {
+      colorBgSpotlight: '#2C2E31',
+      colorTextLightSolid: '#ffffff',
+      borderRadius: 8,
+      fontSize: 12,
+      paddingSM: 8,
+      padding: 12,
+    },
+    Steps: {
+      iconSize: 36,
+      titleLineHeight: 22,
+      descriptionMaxWidth: 140,
+      colorTextDescription: '#8a8f99',
+      navArrowColor: '#8a8f99',
+    },
+    Spin: {
+      colorPrimary: '#5264E0',
+      dotSize: 36,
+      dotSizeSM: 24,
+      dotSizeLG: 48,
+    },
+    Progress: {
+      defaultColor: '#5264E0',
+      remainingColor: '#2C2E31',
+    },
+    Switch: {
+      colorPrimary: '#5264E0',
+      colorPrimaryHover: '#6B80F0',
+      colorTextQuaternary: '#d0d2d8',
+      trackHeightSM: 22,
+      trackMinWidthSM: 40,
+      handleSizeSM: 16,
+    },
+    Slider: {
+      trackBg: '#323640',
+      trackHoverBg: '#323640',
+      railBg: '#323640',
+      railHoverBg: '#323640',
+      handleColor: '#ffffff',
+      handleActiveColor: '#ffffff',
+      handleSize: 16,
+      handleSizeHover: 18,
+      dotActiveBorderColor: '#5264E0',
+      dotBorderColor: '#323640',
+    },
+    Checkbox: {
+      colorPrimary: '#5264E0',
+      colorPrimaryHover: '#6B80F0',
+      colorBgContainer: '#1d1f23',  /* = var(--ds-bg-input) */
+      colorBorder: '#3a3f4d',     /* = var(--ds-border-muted) */
+      borderRadiusSM: 4,
+    },
+    Radio: {
+      colorPrimary: '#5264E0',
+      colorPrimaryHover: '#6B80F0',
+      buttonBg: '#1d1f23',  /* = var(--ds-bg-input) */
+      buttonColor: '#8a8f99',
+      buttonSolidCheckedColor: '#fff',
+      buttonSolidCheckedBg: '#5264E0',
+      buttonSolidCheckedHoverBg: '#6B80F0',
+      radioSize: 16,
+      dotSize: 8,
+    },
+    Breadcrumb: {
+      itemColor: '#8a8f99',
+      lastItemColor: '#d0d2d8',
+      linkColor: '#8a8f99',
+      linkHoverColor: '#5264E0',
+      separatorColor: '#6d717a',
+      fontSize: 12,
+    },
+    Segmented: {
+      itemColor: '#8a8f99',
+      itemHoverColor: '#d0d2d8',
+      itemSelectedBg: '#5264E0',
+      itemSelectedColor: '#ffffff',
+      trackBg: '#222427',
+    },
+    Empty: {
+      colorTextDescription: '#8a8f99',
+    },
+    Typography: {
+      colorText: '#f2f3f5',
+      colorTextHeading: '#f2f3f5',
+      colorTextSecondary: '#8a8f99',
+      colorTextDescription: '#8a8f99',
+    },
+    Dropdown: {
+      colorBgElevated: '#2C2E31',
+      colorText: '#f2f3f5',
+      controlItemBgHover: 'rgba(82, 100, 224, 0.08)',
+      borderRadiusLG: 8,
+    },
+    Popover: {
+      colorBgElevated: '#2C2E31',
+      colorText: '#f2f3f5',
+      borderRadiusLG: 8,
+    },
+    Pagination: {
+      itemActiveBg: '#5264E0',
+      itemBg: '#222427',
+      colorPrimary: '#ffffff',
+      colorPrimaryHover: '#d0d2d8',
+      colorBgContainer: '#222427',
+      colorText: '#8a8f99',
+      colorTextDisabled: '#50545c',
+    },
+    Upload: {
+      colorBgContainer: '#1d1f23',
+      colorBorder: '#323640',
+      colorPrimary: '#5264E0',
+      colorText: '#d0d2d8',
+      colorTextSecondary: '#8a8f99',
+      colorTextDisabled: '#50545c',
+      colorError: '#FF6464',
+      borderRadiusLG: 8,
+    },
+    Alert: {
+      colorSuccessBg: 'rgba(67, 203, 137, 0.15)',
+      colorSuccessBorder: 'rgba(67, 203, 137, 0.3)',
+      colorWarningBg: 'rgba(255, 165, 100, 0.12)',
+      colorWarningBorder: 'rgba(255, 165, 100, 0.25)',
+      colorErrorBg: 'rgba(255, 100, 100, 0.12)',
+      colorErrorBorder: 'rgba(255, 100, 100, 0.25)',
+      colorInfoBg: 'rgba(82, 100, 224, 0.12)',
+      colorInfoBorder: 'rgba(82, 100, 224, 0.25)',
+    },
+  },
+};
+
+// ═══════════════════ 亮色主题 ═══════════════════
+export const lightTheme: ThemeConfig = {
+  token: {
+    ...baseTokens,
+    colorTextBase: '#3d414a',
+    colorBgBase: '#ffffff',
+    // 背景层级
+    colorBgContainer: '#ffffff',
+    colorBgElevated: '#f5f6fa',
+    colorBgLayout: '#f0f1f5',
+    colorBgSpotlight: '#ffffff',
+    colorBgMask: 'rgba(0, 0, 0, 0.4)',
+    // 文本层级
+    colorText: '#3d414a',
+    colorTextSecondary: '#787b84',
+    colorTextTertiary: '#b8bcc4',
+    colorTextQuaternary: '#c8cbd0',
+    colorTextPlaceholder: '#b8bcc4',
+    colorTextDisabled: '#c8cbd0',
+    colorTextHeading: '#3d414a',
+    colorTextLabel: '#787b84',
+    colorTextDescription: '#787b84',
+    // 边框
+    colorBorder: '#e4e5e9',
+    colorBorderSecondary: '#edf0f2',
+    colorSplit: '#edf0f2',
+    // 填充
+    colorFill: 'rgba(0, 0, 0, 0.04)',
+    colorFillSecondary: 'rgba(0, 0, 0, 0.02)',
+    colorFillTertiary: '#ebebeb',
+    colorBgContainerDisabled: '#ebebeb',
+    colorBorderDisabled: '#eeeff2',
+    colorFillQuaternary: 'rgba(0, 0, 0, 0.005)',
+    // Primary 衍生
+    colorPrimaryBg: 'rgba(82, 100, 224, 0.08)',
+    colorPrimaryBgHover: 'rgba(82, 100, 224, 0.12)',
+    colorPrimaryBorder: 'rgba(82, 100, 224, 0.25)',
+    colorPrimaryBorderHover: 'rgba(82, 100, 224, 0.4)',
+    colorPrimaryHover: '#3F50C0',
+    colorPrimaryActive: '#2D40B0',
+    colorPrimaryTextHover: '#3F50C0',
+    colorPrimaryText: '#5264E0',
+    colorPrimaryTextActive: '#2D40B0',
+    // Success 衍生
+    colorSuccessBg: 'rgba(67, 203, 137, 0.12)',
+    colorSuccessBgHover: 'rgba(67, 203, 137, 0.18)',
+    colorSuccessBorder: 'rgba(67, 203, 137, 0.2)',
+    colorSuccessBorderHover: 'rgba(67, 203, 137, 0.35)',
+    colorSuccessHover: '#37B878',
+    colorSuccessActive: '#2EA868',
+    colorSuccessText: '#43CB89',
+    colorSuccessTextHover: '#37B878',
+    colorSuccessTextActive: '#2EA868',
+    // Warning 衍生
+    colorWarningBg: 'rgba(255, 165, 100, 0.08)',
+    colorWarningBgHover: 'rgba(255, 165, 100, 0.14)',
+    colorWarningBorder: 'rgba(255, 165, 100, 0.15)',
+    colorWarningBorderHover: 'rgba(255, 165, 100, 0.3)',
+    colorWarningHover: '#E6954E',
+    colorWarningActive: '#D08540',
+    colorWarningText: '#FFA564',
+    colorWarningTextHover: '#E6954E',
+    colorWarningTextActive: '#D08540',
+    // Error 衍生
+    colorErrorBg: 'rgba(255, 100, 100, 0.08)',
+    colorErrorBgHover: 'rgba(255, 100, 100, 0.14)',
+    colorErrorBorder: 'rgba(255, 100, 100, 0.15)',
+    colorErrorBorderHover: 'rgba(255, 100, 100, 0.3)',
+    colorErrorHover: '#D94C4C',
+    colorErrorActive: '#C44040',
+    colorErrorText: '#FF6464',
+    colorErrorTextHover: '#D94C4C',
+    colorErrorTextActive: '#C44040',
+    // Info 衍生
+    colorInfoBg: 'rgba(82, 100, 224, 0.08)',
+    colorInfoBgHover: 'rgba(82, 100, 224, 0.14)',
+    colorInfoBorder: 'rgba(82, 100, 224, 0.15)',
+    colorInfoBorderHover: 'rgba(82, 100, 224, 0.3)',
+    colorInfoHover: '#3F50C0',
+    colorInfoActive: '#2D40B0',
+    colorInfoText: '#5264E0',
+    colorInfoTextHover: '#3F50C0',
+    colorInfoTextActive: '#2D40B0',
+    // 链接
+    colorLink: '#5264E0',
+    colorLinkHover: '#3F50C0',
+    colorLinkActive: '#2D40B0',
+    // Box Shadow
+    boxShadow: '0 1px 2px rgba(0,0,0,0.06)',
+    boxShadowSecondary: '0 4px 16px rgba(0,0,0,0.10)',
+  },
+  components: {
+    Layout: {
+      bodyBg: '#f0f1f5',
+      headerBg: '#ffffff',
+      siderBg: '#ffffff',
+      triggerBg: '#f5f6fa',
+      triggerColor: '#787b84',
+    },
+    Menu: {
+      darkItemBg: '#ffffff',
+      darkSubMenuItemBg: '#ffffff',
+      darkItemColor: '#787b84',
+      darkItemHoverColor: '#3d414a',
+      darkItemSelectedColor: '#5264E0',
+      darkItemHoverBg: 'rgba(82, 100, 224, 0.06)',
+      darkItemSelectedBg: 'rgba(82, 100, 224, 0.1)',
+      itemBorderRadius: 6,
+      itemHeight: 38,
+      iconSize: 16,
+      collapsedIconSize: 16,
+    },
+    Button: {
+      contentFontSize: 14,
+      contentFontSizeSM: 12,
+      contentFontSizeLG: 14,
+      fontWeight: 500,
+      borderRadius: 6,
+      borderRadiusSM: 4,
+      borderRadiusLG: 8,
+      controlHeight: 36,
+      controlHeightSM: 28,
+      controlHeightLG: 40,
+      paddingInline: 16,
+      paddingInlineSM: 12,
+      paddingInlineLG: 20,
+      defaultBg: 'transparent',
+      defaultColor: '#3d414a',
+      defaultBorderColor: '#d0d2d8',
+      defaultHoverBorderColor: '#5264E0',
+      defaultHoverColor: '#5264E0',
+      defaultActiveBorderColor: '#5264E0',
+      defaultActiveColor: '#5264E0',
+    },
+    Table: {
+      headerBg: '#f5f6fa',
+      headerColor: '#787b84',  /* = var(--ds-text-secondary) */
+      rowHoverBg: '#f8f9fc',
+      rowSelectedBg: 'rgba(82, 100, 224, 0.04)',
+      rowSelectedHoverBg: 'rgba(82, 100, 224, 0.08)',
+      borderColor: '#e4e5e9',
+      headerBorderRadius: 0,
+      cellPaddingBlock: 12,
+      cellPaddingInline: 16,
+    },
+    Tag: {
+      defaultBg: 'rgba(0, 0, 0, 0.04)',
+      defaultColor: '#8c8c8c',
+      fontSizeSM: 12,
+      lineHeightSM: 1.5,
+    },
+    Card: {
+      colorBgContainer: '#ffffff',
+      borderRadiusLG: 8,
+      paddingLG: 20,
+    },
+    Modal: {
+      contentBg: '#ffffff',
+      headerBg: '#ffffff',
+      titleColor: '#3d414a',
+      colorIcon: '#8c8c8c',
+      colorIconHover: '#3d414a',
+      borderRadiusLG: 12,
+      titleFontSize: 16,
+    },
+    Input: {
+      activeBg: '#f5f6fa',
+      hoverBg: '#f5f6fa',
+      activeBorderColor: '#5264E0',
+      hoverBorderColor: '#5264E0',
+      borderRadius: 6,
+      controlHeight: 36,
+      colorBgContainer: '#f5f6fa',
+      colorBorder: '#e4e5e9',
+      colorText: '#3d414a',
+      colorTextPlaceholder: '#b8bcc4',
+      colorTextDisabled: '#c8cbd0',
+    },
+    Select: {
+      optionActiveBg: 'rgba(82, 100, 224, 0.06)',
+      optionSelectedBg: 'rgba(82, 100, 224, 0.08)',
+      optionSelectedColor: '#5264E0',
+      selectorBg: '#f5f6fa',
+      colorBgElevated: '#ffffff',
+      colorBgContainer: '#f5f6fa',
+      colorBorder: '#e4e5e9',
+      borderRadius: 6,
+      controlHeight: 36,
+    },
+    DatePicker: {
+      colorBgContainer: '#ffffff',
+      colorBgElevated: '#ffffff',
+      colorBorder: '#e4e5e9',
+      colorText: '#3d414a',
+      colorTextPlaceholder: '#b8bcc4',
+      activeBorderColor: '#5264E0',
+      hoverBorderColor: '#d0d2d8',
+      cellHoverBg: 'rgba(82, 100, 224, 0.06)',
+      cellActiveWithRangeBg: 'rgba(82, 100, 224, 0.08)',
+      cellRangeBorderColor: '#5264E0',
+      borderRadius: 6,
+      controlHeight: 36,
+    },
+    Tooltip: {
+      colorBgSpotlight: '#2C2E31',
+      colorTextLightSolid: '#ffffff',
+      borderRadius: 8,
+      fontSize: 12,
+      paddingSM: 8,
+      padding: 12,
+    },
+    Steps: {
+      iconSize: 36,
+      titleLineHeight: 22,
+      descriptionMaxWidth: 140,
+      colorTextDescription: '#787b84',
+      navArrowColor: '#787b84',
+    },
+    Spin: {
+      colorPrimary: '#5264E0',
+      dotSize: 36,
+      dotSizeSM: 24,
+      dotSizeLG: 48,
+    },
+    Progress: {
+      defaultColor: '#5264E0',
+      remainingColor: '#f0f1f5',
+    },
+    Switch: {
+      colorPrimary: '#5264E0',
+      colorPrimaryHover: '#3F50C0',
+      colorTextQuaternary: '#3d414a',
+      trackHeightSM: 22,
+      trackMinWidthSM: 40,
+      handleSizeSM: 16,
+    },
+    Slider: {
+      trackBg: '#e4e5e9',
+      trackHoverBg: '#d0d2d8',
+      railBg: '#e4e5e9',
+      railHoverBg: '#d0d2d8',
+      handleColor: '#5264E0',
+      handleActiveColor: '#5264E0',
+      handleSize: 16,
+      handleSizeHover: 18,
+      dotActiveBorderColor: '#5264E0',
+      dotBorderColor: '#e4e5e9',
+    },
+    Checkbox: {
+      colorPrimary: '#5264E0',
+      colorPrimaryHover: '#3F50C0',
+      colorBgContainer: '#f5f6fa',
+      colorBorder: '#d0d2d8',
+      borderRadiusSM: 4,
+    },
+    Radio: {
+      colorPrimary: '#5264E0',
+      colorPrimaryHover: '#3F50C0',
+      buttonBg: '#f5f6fa',
+      buttonColor: '#8c8c8c',
+      buttonSolidCheckedColor: '#fff',
+      buttonSolidCheckedBg: '#5264E0',
+      buttonSolidCheckedHoverBg: '#3F50C0',
+      radioSize: 16,
+      dotSize: 8,
+    },
+    Breadcrumb: {
+      itemColor: '#787b84',
+      lastItemColor: '#3d414a',
+      linkColor: '#787b84',
+      linkHoverColor: '#5264E0',
+      separatorColor: '#b8bcc4',
+      fontSize: 12,
+    },
+    Segmented: {
+      itemColor: '#8c8c8c',
+      itemHoverColor: '#3d414a',
+      itemSelectedBg: '#5264E0',
+      itemSelectedColor: '#ffffff',
+      trackBg: '#f0f1f5',
+    },
+    Empty: {
+      colorTextDescription: '#8c8c8c',
+    },
+    Typography: {
+      colorText: '#3d414a',
+      colorTextHeading: '#3d414a',
+      colorTextSecondary: '#787b84',
+      colorTextDescription: '#787b84',
+    },
+    Dropdown: {
+      colorBgElevated: '#ffffff',
+      colorText: '#3d414a',
+      controlItemBgHover: 'rgba(82, 100, 224, 0.06)',
+      borderRadiusLG: 8,
+    },
+    Popover: {
+      colorBgElevated: '#ffffff',
+      colorText: '#3d414a',
+      borderRadiusLG: 8,
+    },
+    Pagination: {
+      itemActiveBg: '#5264E0',
+      itemBg: '#ffffff',
+      colorPrimary: '#ffffff',
+      colorPrimaryHover: '#f0f1f5',
+      colorBgContainer: '#ffffff',
+      colorText: '#8c8c8c',
+      colorTextDisabled: '#c8cbd0',
+    },
+    Upload: {
+      colorBgContainer: '#f5f6fa',
+      colorBorder: '#e4e5e9',
+      colorPrimary: '#5264E0',
+      colorText: '#3d414a',
+      colorTextSecondary: '#787b84',
+      colorTextDisabled: '#c8cbd0',
+      colorError: '#FF6464',
+      borderRadiusLG: 8,
+    },
+    Alert: {
+      colorSuccessBg: 'rgba(67, 203, 137, 0.12)',
+      colorSuccessBorder: 'rgba(67, 203, 137, 0.2)',
+      colorWarningBg: 'rgba(255, 165, 100, 0.08)',
+      colorWarningBorder: 'rgba(255, 165, 100, 0.15)',
+      colorErrorBg: 'rgba(255, 100, 100, 0.08)',
+      colorErrorBorder: 'rgba(255, 100, 100, 0.15)',
+      colorInfoBg: 'rgba(82, 100, 224, 0.08)',
+      colorInfoBorder: 'rgba(82, 100, 224, 0.15)',
+    },
+  },
+};
