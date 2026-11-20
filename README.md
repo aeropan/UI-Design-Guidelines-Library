@@ -12,6 +12,23 @@
 - 适用：**数据平台 / 后台管理 / AI 平台 / 图谱平台 / 数据中台**
 - 📂 [进入规范子目录](./design-system-ui-main/) · 📘 [设计规范 DESIGN.md](./design-system-ui-main/DESIGN.md) · 📋 [变更日志](./design-system-ui-main/CHANGELOG.md)
 
+### 暖杏奶油风设计规范 (warm-apricot-cream-ui) · v1.0.0
+
+![暖杏奶油风规范总览](./warm-apricot-cream-ui/screenshots/overview.jpg)
+
+![暖杏奶油风界面预览 1](./warm-apricot-cream-ui/screenshots/inner_1.png)
+
+![暖杏奶油风界面预览 2](./warm-apricot-cream-ui/screenshots/inner_2.png)
+
+![暖杏奶油风界面预览 3](./warm-apricot-cream-ui/screenshots/inner_3.png)
+
+![暖杏奶油风界面预览 4](./warm-apricot-cream-ui/screenshots/inner_4.png)
+
+- 浅色暖调、系统字体、框架无关 token 与组件示例
+- 深暖棕核心操作、暖白表面、轻量暖灰阴影
+- 适用：**对话助手 / 知识问答 / 资料库 / 可解释工作台 / 宠物健康科普界面**
+- 📂 [使用与接入](./warm-apricot-cream-ui/README.md) · 📘 [设计规范](./warm-apricot-cream-ui/DESIGN.md) · 🧩 [组件目录](./warm-apricot-cream-ui/COMPONENTS.md)
+
 ## 如何使用这套规范
 
 ### 给大模型用（推荐）

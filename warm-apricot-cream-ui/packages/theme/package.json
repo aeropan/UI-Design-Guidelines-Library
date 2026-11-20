@@ -1,0 +1,27 @@
+{
+  "name": "@warm-apricot-cream/theme",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./dist/tokens.json",
+    "./components.css": "./dist/components.css"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ]
+}

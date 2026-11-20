@@ -1,0 +1,12 @@
+{
+  "name": "warm-apricot-cream-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "暖杏奶油风设计规范：框架无关token、组件与对话/知识工作台示例",
+  "scripts": {
+    "build": "node packages/theme/scripts/build.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs && python tests/test_server.py",
+    "docs:dev": "npm run build && python scripts/serve_docs.py",
+    "theme:pack": "npm run build && npm pack ./packages/theme --pack-destination . --ignore-scripts"
+  }
+}

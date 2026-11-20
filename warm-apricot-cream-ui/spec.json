@@ -1,0 +1,44 @@
+{
+  "id": "warm-apricot-cream-ui",
+  "name": "暖杏奶油风设计规范",
+  "version": "1.0.0",
+  "summary": "浅色暖调、框架无关的对话助手与知识工作台设计规范",
+  "scenarios": [
+    "对话助手",
+    "知识问答",
+    "宠物健康科普界面",
+    "文献资料库",
+    "可解释推理与图谱工作台"
+  ],
+  "themes": [
+    "light"
+  ],
+  "principles": [
+    "中性色占主导，暖棕引导核心操作",
+    "品牌强调色与可读的操作色分离",
+    "系统字体、清晰文字层级、正文15/24",
+    "布局以4px为基线，控件内部允许明示的10/14px例外",
+    "轻量暖灰静态阴影可用，文献条目保持平面",
+    "视觉规范与医疗事实、数据服务、业务流程分离"
+  ],
+  "ai": {
+    "codex": "ai/AGENTS.md",
+    "workbuddy": "ai/workbuddy/SKILL.md"
+  },
+  "tokens": "packages/theme/src/tokens.json",
+  "examples": "packages/docs/index.html",
+  "screenshots": [
+    "screenshots/overview.jpg",
+    "screenshots/inner_1.png",
+    "screenshots/inner_2.png",
+    "screenshots/inner_3.png",
+    "screenshots/inner_4.png"
+  ],
+  "links": {
+    "design": "DESIGN.md",
+    "readme": "README.md",
+    "changelog": "CHANGELOG.md",
+    "components": "COMPONENTS.md",
+    "decisions": "references/extraction-decisions.md"
+  }
+}
